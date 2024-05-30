@@ -7,8 +7,8 @@ const mnemonic =
     'double enlist lobster also layer face muffin parade direct famous notice kite';
 describe('coreXRP', () => {
     test('init', async () => {
-        const matic = new XRPWallet(Coins.XRP, mnemonic, 'my_wallet', 0);
-        const address = matic.getReceiveAddress({
+        const xrpWallet = new XRPWallet(Coins.XRP, mnemonic, 'my_wallet', 0);
+        const address = xrpWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
         });
@@ -16,8 +16,8 @@ describe('coreXRP', () => {
         expect(address).toBe('rMmewYFjHmtrVo8Fjrfb1eJJnVAsMR5KPL');
     });
     test('getTransactions', async () => {
-        const matic = new XRPWallet(Coins.XRP, mnemonic, 'my_wallet', 0);
-        const transactions = await matic.getTransactions({
+        const xrpWallet = new XRPWallet(Coins.XRP, mnemonic, 'my_wallet', 0);
+        const transactions = await xrpWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,
         });

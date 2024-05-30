@@ -355,6 +355,9 @@ class UTXOWallet extends CoinWallet {
         walletAccount: number;
         walletName: string;
     }) {
+        if(this.extendedPublicKeys[walletName] == undefined || this.extendedPublicKeys[walletName][walletAccount] == undefined) {
+            throw new Error(WalletNotFound);
+        }
         const addresses = [];
         for (let p of Object.keys(
             this.extendedPublicKeys[walletName][walletAccount],

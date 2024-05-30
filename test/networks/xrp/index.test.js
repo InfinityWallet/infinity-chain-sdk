@@ -4,7 +4,6 @@ const ed25519_1 = require("@infinity/core-sdk/lib/commonjs/networks/ed25519");
 const globals_1 = require("@jest/globals");
 const builder_1 = require("../../../lib/commonjs/networks/xrp/builder");
 const estimateFee_1 = require("../../../lib/commonjs/networks/xrp/estimateFee");
-//import { sendTransaction } from '../../../lib/commonjs/networks/xrp/sendTransaction';
 const utils_1 = require("../../utils");
 const core_1 = require("@infinity/core-sdk/lib/commonjs/core");
 const getBalance_1 = require("../../../lib/commonjs/networks/xrp/getBalance");

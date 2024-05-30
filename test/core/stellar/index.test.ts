@@ -7,13 +7,13 @@ const mnemonic =
     'derive lab over dragon nothing pioneer until deputy inherit help next release';
 describe('coreStellar', () => {
     test('init', async () => {
-        const matic = new StellarWallet(
+        const stellarWallet = new StellarWallet(
             Coins.STELLAR,
             mnemonic,
             'my_wallet',
             0,
         );
-        const address = matic.getReceiveAddress({
+        const address = stellarWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
         });
@@ -23,13 +23,13 @@ describe('coreStellar', () => {
         );
     });
     test('getTransactions', async () => {
-        const matic = new StellarWallet(
+        const stellarWallet = new StellarWallet(
             Coins.STELLAR,
             mnemonic,
             'my_wallet',
             0,
         );
-        const transactions = await matic.getTransactions({
+        const transactions = await stellarWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,
         });

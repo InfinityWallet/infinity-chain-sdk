@@ -32,7 +32,7 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             publicAccountNode: privateAccountNode,
         });
         const privateKey = (0, evm_1.getPrivateAddress)({
-            privateAccountNode,
+            privateKey: (0, secp256k1_1.getPrivateKey)({ privateAccountNode })?.privateKey
         });
         const built = await (0, builder_1.buildTransaction)({
             connector: utils_1.web3Op,

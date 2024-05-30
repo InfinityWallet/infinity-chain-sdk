@@ -44,7 +44,6 @@ abstract class BaseWallet {
     abstract sendTransaction(_props: any): any;
     abstract getPrivateKey(_props: any): any;
     abstract getPrivateAddress(_props: any): any;
-
     abstract getKeyPair(_props: any): any;
     abstract getTransactions(_props: any): any;
     abstract getAccountBalances(_props: any): any;

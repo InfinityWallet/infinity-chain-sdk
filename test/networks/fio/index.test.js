@@ -17,14 +17,14 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             rootNode,
             walletAccount: 0,
         });
-        const privateAddress = (0, address_1.getFIOPrivateAddress)({
-            privateAccountNode,
+        const privateKey = (0, address_1.getFIOPrivateAddress)({
+            privateKey: (0, secp256k1_1.getPrivateKey)({ privateAccountNode })?.privateKey
         });
         const built = await (0, builder_1.buildTransaction)({
             value: '100',
             source: 'FIO5isJA4r93w5SroiiTvsba3tdpsi49Eb3ArGCFMbo3XhrKqFVHR',
             destination: 'FIO5Y3irLYwTmCA8LZiG25QvXN7g2sRz9RdHVR6RnNNb8Tr7KVXQp',
-            privateKey: privateAddress,
+            privateKey,
         });
         (0, globals_1.expect)(built.signatures.length).toBe(1);
     });

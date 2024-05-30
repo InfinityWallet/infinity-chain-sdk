@@ -14,7 +14,7 @@ import {
     TransactionType,
 } from '../../../networks/types';
 import CoinWallet from '../../wallet';
-import { BuildTransactionParams, SignTransactionParams } from './types';
+import { BuildTransactionParams, GetTransactionsParams, SignTransactionParams } from './types';
 import ED25519Coin from '@infinity/core-sdk/lib/commonjs/networks/coin/ed25519';
 import { Keypair, Server, Transaction } from 'stellar-sdk';
 import { Coins } from '@infinity/core-sdk/lib/commonjs/networks';
@@ -33,6 +33,7 @@ import {
     getSecretAddress,
     getSeed,
 } from '@infinity/core-sdk/lib/commonjs/networks/ed25519';
+import { getTransactions } from '../../../transactionParsers/stellar/get';
 
 class StellarWallet extends CoinWallet {
     connector!: Server;
@@ -263,6 +264,25 @@ class StellarWallet extends CoinWallet {
             bipIdCoin: this.bipIdCoin,
             secretKey: privateKey,
         });
+    }
+    async getTransactions({
+        walletAccount,
+        swapHistorical,
+        walletName,
+    }: GetTransactionsParams): Promise<TransactionNetwork[]> {
+        const transactions = await getTransactions({
+            address: this.getReceiveAddress({
+                walletAccount,
+                walletName,
+            }),
+        });
+        this.setTransactionFormat({
+            swapHistorical,
+            transactions,
+            walletAccount,
+            walletName,
+        });
+        return transactions;
     }
 }
 
