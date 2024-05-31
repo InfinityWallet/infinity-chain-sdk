@@ -9,16 +9,16 @@ const index_1 = __importDefault(require("../../../lib/commonjs/core/wallets/xrp/
 const mnemonic = 'double enlist lobster also layer face muffin parade direct famous notice kite';
 (0, globals_1.describe)('coreXRP', () => {
     (0, globals_1.test)('init', async () => {
-        const matic = new index_1.default(registry_1.Coins.XRP, mnemonic, 'my_wallet', 0);
-        const address = matic.getReceiveAddress({
+        const xrpWallet = new index_1.default(registry_1.Coins.XRP, mnemonic, 'my_wallet', 0);
+        const address = xrpWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
         });
         (0, globals_1.expect)(address).toBe('rMmewYFjHmtrVo8Fjrfb1eJJnVAsMR5KPL');
     });
     (0, globals_1.test)('getTransactions', async () => {
-        const matic = new index_1.default(registry_1.Coins.XRP, mnemonic, 'my_wallet', 0);
-        const transactions = await matic.getTransactions({
+        const xrpWallet = new index_1.default(registry_1.Coins.XRP, mnemonic, 'my_wallet', 0);
+        const transactions = await xrpWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,
         });

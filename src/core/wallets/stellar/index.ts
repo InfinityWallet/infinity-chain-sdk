@@ -14,7 +14,11 @@ import {
     TransactionType,
 } from '../../../networks/types';
 import CoinWallet from '../../wallet';
-import { BuildTransactionParams, GetTransactionsParams, SignTransactionParams } from './types';
+import {
+    BuildTransactionParams,
+    GetTransactionsParams,
+    SignTransactionParams,
+} from './types';
 import ED25519Coin from '@infinity/core-sdk/lib/commonjs/networks/coin/ed25519';
 import { Keypair, Server, Transaction } from 'stellar-sdk';
 import { Coins } from '@infinity/core-sdk/lib/commonjs/networks';

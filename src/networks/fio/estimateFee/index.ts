@@ -6,6 +6,7 @@ import { BigNumber } from '@infinity/core-sdk/lib/commonjs/core';
 import { estimateFeeParametersChecker } from '../parametersChecker';
 import { Coins } from '@infinity/core-sdk/lib/commonjs/networks';
 import config from '@infinity/core-sdk/lib/commonjs/networks/config';
+import { CannotEstimateTransaction } from '../../../errors/networks';
 
 const DEFAULT_FEE = FIOSDK.SUFUnit * 10;
 
@@ -26,6 +27,12 @@ export const estimateFee = (source: string): Promise<EstimateFeeResult> => {
             })
             .then((a: AxiosResponse<FeeResult>) => {
                 if (a.data && a.data.fee) {
+                    if (
+                        !new BigNumber(a.data.fee).isGreaterThan(0) ||
+                        new BigNumber(a.data.fee).isNaN()
+                    ) {
+                        throw new Error(CannotEstimateTransaction);
+                    }
                     resolve({ fee: new BigNumber(a.data.fee).toString(10) });
                 } else {
                     resolve({ fee: DEFAULT_FEE + '' });

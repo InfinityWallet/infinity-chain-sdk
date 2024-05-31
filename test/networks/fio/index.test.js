@@ -18,7 +18,8 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             walletAccount: 0,
         });
         const privateKey = (0, address_1.getFIOPrivateAddress)({
-            privateKey: (0, secp256k1_1.getPrivateKey)({ privateAccountNode })?.privateKey
+            privateKey: (0, secp256k1_1.getPrivateKey)({ privateAccountNode })
+                ?.privateKey,
         });
         const built = await (0, builder_1.buildTransaction)({
             value: '100',

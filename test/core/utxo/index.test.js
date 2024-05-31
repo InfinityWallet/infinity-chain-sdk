@@ -9,16 +9,16 @@ const index_1 = __importDefault(require("../../../lib/commonjs/core/wallets/utxo
 const mnemonic = 'derive lab over dragon nothing pioneer until deputy inherit help next release';
 (0, globals_1.describe)('coreUTXO', () => {
     (0, globals_1.test)('init', async () => {
-        const matic = new index_1.default(registry_1.Coins.LTC, mnemonic, 'my_wallet', 0);
-        const address = matic.getReceiveAddress({
+        const utxoWallet = new index_1.default(registry_1.Coins.LTC, mnemonic, 'my_wallet', 0);
+        const address = utxoWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
         });
         (0, globals_1.expect)(address).toBe('LNiHyZY6wstYSJnkyE8dXTCGZRuBk7526m');
     });
     (0, globals_1.test)('getTransactions', async () => {
-        const matic = new index_1.default(registry_1.Coins.LTC, mnemonic, 'my_wallet', 0);
-        const transactions = await matic.getTransactions({
+        const utxoWallet = new index_1.default(registry_1.Coins.LTC, mnemonic, 'my_wallet', 0);
+        const transactions = await utxoWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,
         });

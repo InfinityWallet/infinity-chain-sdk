@@ -56,23 +56,27 @@ export const estimateTransactionCost = async (props: {
     connector: Connection;
 }): Promise<EstimateFeeResult> => {
     try {
-        if ('message' in props.transaction)
+        if ('message' in props.transaction) {
+            const fee = (
+                await props.connector.getFeeForMessage(
+                    props.transaction.message,
+                    'confirmed',
+                )
+            ).value?.toString(10);
             return {
-                fee: (
-                    await props.connector.getFeeForMessage(
-                        props.transaction.message,
-                        'confirmed',
-                    )
-                ).value?.toString(10),
+                fee,
             };
-        else
+        } else {
+            const fee = new BigNumber(
+                (await props.transaction.getEstimatedFee(
+                    props.connector,
+                )) as number,
+            ).toString(10);
+
             return {
-                fee: new BigNumber(
-                    (await props.transaction.getEstimatedFee(
-                        props.connector,
-                    )) as number,
-                ).toString(10),
+                fee,
             };
+        }
     } catch (e) {
         console.error(e);
         throw new Error(CannotEstimateTransaction);

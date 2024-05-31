@@ -7,7 +7,12 @@ const mnemonic =
     'derive lab over dragon nothing pioneer until deputy inherit help next release';
 describe('coreTezos', () => {
     test('init', async () => {
-        const tezosWallet = new TezosWallet(Coins.TEZOS, mnemonic, 'my_wallet', 0);
+        const tezosWallet = new TezosWallet(
+            Coins.TEZOS,
+            mnemonic,
+            'my_wallet',
+            0,
+        );
         const address = tezosWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
@@ -16,7 +21,12 @@ describe('coreTezos', () => {
         expect(address).toBe('tz1bHaVSz1e9GeRMV7MUkS5wZmMH5qf8m8Ym');
     });
     test('getTransactions', async () => {
-        const tezosWallet = new TezosWallet(Coins.TEZOS, mnemonic, 'my_wallet', 0);
+        const tezosWallet = new TezosWallet(
+            Coins.TEZOS,
+            mnemonic,
+            'my_wallet',
+            0,
+        );
         const transactions = await tezosWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,

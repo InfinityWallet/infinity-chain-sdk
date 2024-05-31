@@ -20,11 +20,18 @@ export const estimateL1Cost = async (
         '0x420000000000000000000000000000000000000F',
     );
     try {
-        return new BigNumber(
+        const fee = new BigNumber(
             await gpo.methods
                 .getL1Fee(Buffer.from(rawTransaction, 'hex'))
                 .call(),
         ).toString(10);
+        if (
+            !new BigNumber(fee).isGreaterThan(0) ||
+            new BigNumber(fee).isNaN()
+        ) {
+            throw new Error(CannotEstimateTransaction);
+        }
+        return fee;
     } catch (e) {
         console.error(e);
         throw new Error(CannotEstimateTransaction);

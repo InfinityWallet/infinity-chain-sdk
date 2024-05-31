@@ -56,6 +56,12 @@ export const estimateFee = async (
                 .plus(fee)
                 .toString(10);
         }
+        if (
+            !new BigNumber(fee).isGreaterThan(0) ||
+            new BigNumber(fee).isNaN()
+        ) {
+            throw new Error(CannotEstimateTransaction);
+        }
 
         return {
             fee,

@@ -15,8 +15,8 @@ const getLastChangeIndex_1 = require("../../../lib/commonjs/networks/utxo/getLas
 //import { sendTransaction } from '../../../lib/commonjs/networks/utxo/sendTransaction';
 const core_1 = require("@infinity/core-sdk/lib/commonjs/core");
 const registry_1 = require("@infinity/core-sdk/lib/commonjs/networks/registry");
-const networks_1 = __importDefault(require("@infinity/core-sdk/lib/commonjs/networks/networks"));
-const networks_2 = require("@infinity/core-sdk/lib/commonjs/networks");
+const networks_1 = require("@infinity/core-sdk/lib/commonjs/networks");
+const config_1 = __importDefault(require("@infinity/core-sdk/lib/commonjs/networks/config"));
 const mnemonic = 'double enlist lobster also layer face muffin parade direct famous notice kite';
 (0, globals_1.describe)('networksUTXO', () => {
     (0, globals_1.test)('builder', async () => {
@@ -24,12 +24,15 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             await (0, utils_2.sleep)(500);
         }
         const privateAccountNode = (0, secp256k1_1.getPrivateMasterKey)({
-            rootNode: (0, secp256k1_1.getRootNode)({ mnemonic, network: networks_1.default[registry_1.Coins.LTC] }),
+            rootNode: (0, secp256k1_1.getRootNode)({
+                mnemonic,
+                network: config_1.default[registry_1.Coins.LTC].network,
+            }),
             bipIdCoin: registry_1.CoinIds.LTC,
             protocol: registry_1.Protocol.LEGACY,
             walletAccount: 0,
         });
-        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_2.Encoding.LTUB);
+        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_1.Encoding.LTUB);
         const build = await (0, builder_1.buildTransaction)({
             amount: '10000',
             coinId: registry_1.Coins.LTC,
@@ -60,12 +63,15 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             await (0, utils_2.sleep)(500);
         }
         const privateAccountNode = (0, secp256k1_1.getPrivateMasterKey)({
-            rootNode: (0, secp256k1_1.getRootNode)({ mnemonic, network: networks_1.default[registry_1.Coins.LTC] }),
+            rootNode: (0, secp256k1_1.getRootNode)({
+                mnemonic,
+                network: config_1.default[registry_1.Coins.LTC].network,
+            }),
             bipIdCoin: registry_1.CoinIds.LTC,
             protocol: registry_1.Protocol.LEGACY,
             walletAccount: 0,
         });
-        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_2.Encoding.LTUB);
+        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_1.Encoding.LTUB);
         const estimate = await (0, index_1.estimateFee)({
             amount: '10000',
             coinId: registry_1.Coins.LTC,
@@ -80,12 +86,15 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             await (0, utils_2.sleep)(500);
         }
         const privateAccountNode = (0, secp256k1_1.getPrivateMasterKey)({
-            rootNode: (0, secp256k1_1.getRootNode)({ mnemonic, network: networks_1.default[registry_1.Coins.LTC] }),
+            rootNode: (0, secp256k1_1.getRootNode)({
+                mnemonic,
+                network: config_1.default[registry_1.Coins.LTC].network,
+            }),
             bipIdCoin: registry_1.CoinIds.LTC,
             protocol: registry_1.Protocol.LEGACY,
             walletAccount: 0,
         });
-        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_2.Encoding.LTUB);
+        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_1.Encoding.LTUB);
         const balance = await (0, index_2.getBalance)({
             extendedPublicKeys: [xpub],
             connector: utils_1.connector,
@@ -98,12 +107,15 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             await (0, utils_2.sleep)(500);
         }
         const privateAccountNode = (0, secp256k1_1.getPrivateMasterKey)({
-            rootNode: (0, secp256k1_1.getRootNode)({ mnemonic, network: networks_1.default[registry_1.Coins.LTC] }),
+            rootNode: (0, secp256k1_1.getRootNode)({
+                mnemonic,
+                network: config_1.default[registry_1.Coins.LTC].network,
+            }),
             bipIdCoin: registry_1.CoinIds.LTC,
             protocol: registry_1.Protocol.LEGACY,
             walletAccount: 0,
         });
-        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_2.Encoding.LTUB);
+        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_1.Encoding.LTUB);
         const balance = await (0, index_2.getAccountBalances)({
             extendedPublicKeys: [xpub],
             connector: utils_1.connector,
@@ -116,12 +128,15 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             await (0, utils_2.sleep)(500);
         }
         const privateAccountNode = (0, secp256k1_1.getPrivateMasterKey)({
-            rootNode: (0, secp256k1_1.getRootNode)({ mnemonic, network: networks_1.default[registry_1.Coins.LTC] }),
+            rootNode: (0, secp256k1_1.getRootNode)({
+                mnemonic,
+                network: config_1.default[registry_1.Coins.LTC].network,
+            }),
             bipIdCoin: registry_1.CoinIds.LTC,
             protocol: registry_1.Protocol.LEGACY,
             walletAccount: 0,
         });
-        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_2.Encoding.LTUB);
+        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_1.Encoding.LTUB);
         const utxo = await (0, getUTXO_1.getUTXO)({
             extendedPublicKey: xpub,
             connector: utils_1.connector,
@@ -134,12 +149,15 @@ const mnemonic = 'double enlist lobster also layer face muffin parade direct fam
             await (0, utils_2.sleep)(500);
         }
         const privateAccountNode = (0, secp256k1_1.getPrivateMasterKey)({
-            rootNode: (0, secp256k1_1.getRootNode)({ mnemonic, network: networks_1.default[registry_1.Coins.LTC] }),
+            rootNode: (0, secp256k1_1.getRootNode)({
+                mnemonic,
+                network: config_1.default[registry_1.Coins.LTC].network,
+            }),
             bipIdCoin: registry_1.CoinIds.LTC,
             protocol: registry_1.Protocol.LEGACY,
             walletAccount: 0,
         });
-        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_2.Encoding.LTUB);
+        const xpub = (0, secp256k1_1.encodeGeneric)(privateAccountNode.neutered().toBase58(), networks_1.Encoding.LTUB);
         const { index, protocol } = await (0, getLastChangeIndex_1.getLastChangeIndex)({
             extendedPublicKey: xpub,
             connector: utils_1.connector,

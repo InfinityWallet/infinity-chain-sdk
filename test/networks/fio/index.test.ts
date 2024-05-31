@@ -25,7 +25,8 @@ describe('networksFIO', () => {
             walletAccount: 0,
         });
         const privateKey = getFIOPrivateAddress({
-            privateKey:getPrivateKey({privateAccountNode})?.privateKey as Buffer
+            privateKey: getPrivateKey({ privateAccountNode })
+                ?.privateKey as Buffer,
         });
         const built = await buildTransaction({
             value: '100',

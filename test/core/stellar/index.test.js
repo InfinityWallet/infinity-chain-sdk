@@ -9,16 +9,16 @@ const index_1 = __importDefault(require("../../../lib/commonjs/core/wallets/stel
 const mnemonic = 'derive lab over dragon nothing pioneer until deputy inherit help next release';
 (0, globals_1.describe)('coreStellar', () => {
     (0, globals_1.test)('init', async () => {
-        const matic = new index_1.default(registry_1.Coins.STELLAR, mnemonic, 'my_wallet', 0);
-        const address = matic.getReceiveAddress({
+        const stellarWallet = new index_1.default(registry_1.Coins.STELLAR, mnemonic, 'my_wallet', 0);
+        const address = stellarWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
         });
         (0, globals_1.expect)(address).toBe('GCYKH5F7TTFCKPB25N6ZMA6NUYE62P4QOBZ5WCQGEAQPEZEMNW7F3TOO');
     });
     (0, globals_1.test)('getTransactions', async () => {
-        const matic = new index_1.default(registry_1.Coins.STELLAR, mnemonic, 'my_wallet', 0);
-        const transactions = await matic.getTransactions({
+        const stellarWallet = new index_1.default(registry_1.Coins.STELLAR, mnemonic, 'my_wallet', 0);
+        const transactions = await stellarWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,
         });

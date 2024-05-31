@@ -70,7 +70,7 @@ class CoinWallet extends BaseWallet {
         walletAccount,
         walletName,
     }: GetReceiveAddressParams): string {
-        if (!walletAccount || !walletName) throw new Error(MissingParams);
+        if (walletAccount == undefined || !walletName) throw new Error(MissingParams);
         if (!this.addresses[walletName]) throw new Error(MissingWallet);
         let derivation;
         if (config[this.id].derivations.length > 1) {
@@ -93,7 +93,7 @@ class CoinWallet extends BaseWallet {
      * @param {string} walletAccount - The name of the wallet to remove.
      */
     removeWallet(walletAccount: number) {
-        if (!walletAccount) throw new Error(MissingParams);
+        if (walletAccount == undefined) throw new Error(MissingParams);
 
         delete this.addresses[walletAccount];
         delete this.publicNode[walletAccount];

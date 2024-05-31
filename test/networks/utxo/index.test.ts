@@ -24,8 +24,8 @@ import {
     Coins,
     Protocol,
 } from '@infinity/core-sdk/lib/commonjs/networks/registry';
-import networks from '@infinity/core-sdk/lib/commonjs/networks/networks';
 import { Encoding } from '@infinity/core-sdk/lib/commonjs/networks';
+import config from '@infinity/core-sdk/lib/commonjs/networks/config';
 
 const mnemonic =
     'double enlist lobster also layer face muffin parade direct famous notice kite';
@@ -35,7 +35,10 @@ describe('networksUTXO', () => {
             await sleep(500);
         }
         const privateAccountNode = getPrivateMasterKey({
-            rootNode: getRootNode({ mnemonic, network: networks[Coins.LTC] }),
+            rootNode: getRootNode({
+                mnemonic,
+                network: config[Coins.LTC].network,
+            }),
             bipIdCoin: CoinIds.LTC,
             protocol: Protocol.LEGACY,
             walletAccount: 0,
@@ -74,7 +77,10 @@ describe('networksUTXO', () => {
             await sleep(500);
         }
         const privateAccountNode = getPrivateMasterKey({
-            rootNode: getRootNode({ mnemonic, network: networks[Coins.LTC] }),
+            rootNode: getRootNode({
+                mnemonic,
+                network: config[Coins.LTC].network,
+            }),
             bipIdCoin: CoinIds.LTC,
             protocol: Protocol.LEGACY,
             walletAccount: 0,
@@ -99,7 +105,10 @@ describe('networksUTXO', () => {
             await sleep(500);
         }
         const privateAccountNode = getPrivateMasterKey({
-            rootNode: getRootNode({ mnemonic, network: networks[Coins.LTC] }),
+            rootNode: getRootNode({
+                mnemonic,
+                network: config[Coins.LTC].network,
+            }),
             bipIdCoin: CoinIds.LTC,
             protocol: Protocol.LEGACY,
             walletAccount: 0,
@@ -120,7 +129,10 @@ describe('networksUTXO', () => {
             await sleep(500);
         }
         const privateAccountNode = getPrivateMasterKey({
-            rootNode: getRootNode({ mnemonic, network: networks[Coins.LTC] }),
+            rootNode: getRootNode({
+                mnemonic,
+                network: config[Coins.LTC].network,
+            }),
             bipIdCoin: CoinIds.LTC,
             protocol: Protocol.LEGACY,
             walletAccount: 0,
@@ -143,7 +155,10 @@ describe('networksUTXO', () => {
             await sleep(500);
         }
         const privateAccountNode = getPrivateMasterKey({
-            rootNode: getRootNode({ mnemonic, network: networks[Coins.LTC] }),
+            rootNode: getRootNode({
+                mnemonic,
+                network: config[Coins.LTC].network,
+            }),
             bipIdCoin: CoinIds.LTC,
             protocol: Protocol.LEGACY,
             walletAccount: 0,
@@ -164,7 +179,10 @@ describe('networksUTXO', () => {
             await sleep(500);
         }
         const privateAccountNode = getPrivateMasterKey({
-            rootNode: getRootNode({ mnemonic, network: networks[Coins.LTC] }),
+            rootNode: getRootNode({
+                mnemonic,
+                network: config[Coins.LTC].network,
+            }),
             bipIdCoin: CoinIds.LTC,
             protocol: Protocol.LEGACY,
             walletAccount: 0,

@@ -16,12 +16,12 @@ import {
     getPrivateMasterKey,
     getPrivateKey,
 } from '@infinity/core-sdk/lib/commonjs/networks/utils/secp256k1';
-import networks from '@infinity/core-sdk/lib/commonjs/networks/networks';
 import {
     CoinIds,
     Coins,
     Protocol,
 } from '@infinity/core-sdk/lib/commonjs/networks/registry';
+import config from '@infinity/core-sdk/lib/commonjs/networks/config';
 const PRIORITY_FEES = {
     [Chains.ETH]: '1000000000',
     [Chains.MATIC]: '21000000000',
@@ -32,7 +32,7 @@ describe('networksEVM', () => {
     test('builder', async () => {
         const rootNode = getRootNode({
             mnemonic,
-            network: networks[Coins.ETH],
+            network: config[Coins.ETH].network,
         });
         const privateAccountNode = getPrivateMasterKey({
             bipIdCoin: CoinIds.ETH,
@@ -46,7 +46,8 @@ describe('networksEVM', () => {
             publicAccountNode: privateAccountNode,
         });
         const privateKey = getPrivateAddress({
-            privateKey:getPrivateKey({privateAccountNode})?.privateKey as Buffer
+            privateKey: getPrivateKey({ privateAccountNode })
+                ?.privateKey as Buffer,
         });
         const built = await buildTransaction({
             connector: web3Matic,

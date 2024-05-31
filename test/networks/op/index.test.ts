@@ -9,20 +9,20 @@ import {
     getPrivateMasterKey,
     getRootNode,
 } from '@infinity/core-sdk/lib/commonjs/networks/utils/secp256k1';
-import networks from '@infinity/core-sdk/lib/commonjs/networks/networks';
 import {
     CoinIds,
     Coins,
     Protocol,
 } from '@infinity/core-sdk/lib/commonjs/networks/registry';
 import { getPrivateAddress } from '@infinity/core-sdk/lib/commonjs/networks/evm';
+import config from '@infinity/core-sdk/lib/commonjs/networks/config';
 const mnemonic =
     'double enlist lobster also layer face muffin parade direct famous notice kite';
 describe('networksOP', () => {
     test('estimateL1Cost', async () => {
         const rootNode = getRootNode({
             mnemonic,
-            network: networks[Coins.ETH],
+            network: config[Coins.ETH].network,
         });
         const privateAccountNode = getPrivateMasterKey({
             bipIdCoin: CoinIds.ETH,
@@ -36,7 +36,8 @@ describe('networksOP', () => {
             publicAccountNode: privateAccountNode,
         });
         const privateKey = getPrivateAddress({
-            privateKey:getPrivateKey({privateAccountNode})?.privateKey as Buffer
+            privateKey: getPrivateKey({ privateAccountNode })
+                ?.privateKey as Buffer,
         });
         const built = await buildTransaction({
             connector: web3Op,
