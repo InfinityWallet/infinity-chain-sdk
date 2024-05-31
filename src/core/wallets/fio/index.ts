@@ -23,7 +23,6 @@ import {
     getPrivateMasterKey,
     getRootNode,
 } from '@infinity/core-sdk/lib/commonjs/networks/utils/secp256k1';
-import networks from '@infinity/core-sdk/lib/commonjs/networks/networks';
 import { GetPrivateKeyParams } from '../../types';
 import { getFIOPrivateAddress } from '@infinity/core-sdk/lib/commonjs/networks/evm';
 
@@ -167,7 +166,7 @@ class FIOWallet extends CoinWallet {
     getPrivateKey({ mnemonic, walletAccount }: GetPrivateKeyParams) {
         const rootNode = getRootNode({
             mnemonic,
-            network: networks[Coins.ETH],
+            network: config[this.id].network,
         });
         const privateAccountNode = getPrivateMasterKey({
             bipIdCoin: this.bipIdCoin,
@@ -177,7 +176,7 @@ class FIOWallet extends CoinWallet {
         });
         return getPrivateKey({
             privateAccountNode,
-            network: networks[Coins.FIO],
+            network: config[this.id].network,
         })?.privateKey;
     }
 

@@ -7,8 +7,8 @@ const mnemonic =
     'double enlist lobster also layer face muffin parade direct famous notice kite';
 describe('coreFIO', () => {
     test('init', async () => {
-        const matic = new FIOWallet(Coins.FIO, mnemonic, 'my_wallet', 0);
-        const address = matic.getReceiveAddress({
+        const fioWallet = new FIOWallet(Coins.FIO, mnemonic, 'my_wallet', 0);
+        const address = fioWallet.getReceiveAddress({
             walletName: 'my_wallet',
             walletAccount: 0,
         });
@@ -18,8 +18,8 @@ describe('coreFIO', () => {
         );
     });
     test('getTransactions', async () => {
-        const matic = new FIOWallet(Coins.FIO, mnemonic, 'my_wallet', 0);
-        const transactions = await matic.getTransactions({
+        const fioWallet = new FIOWallet(Coins.FIO, mnemonic, 'my_wallet', 0);
+        const transactions = await fioWallet.getTransactions({
             walletName: 'my_wallet',
             walletAccount: 0,
         });

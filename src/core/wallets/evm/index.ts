@@ -15,7 +15,6 @@ import {
     TransactionType,
 } from '../../../networks/types';
 import { Coins, Protocol } from '@infinity/core-sdk/lib/commonjs/networks';
-import networks from '@infinity/core-sdk/lib/commonjs/networks/networks';
 
 import config from '@infinity/core-sdk/lib/commonjs/networks/config';
 import {
@@ -335,7 +334,7 @@ class EVMWallet extends CoinWallet {
     getPrivateKey({ mnemonic, walletAccount }: GetPrivateKeyParams) {
         const rootNode = getRootNode({
             mnemonic,
-            network: networks[Coins.ETH],
+            network: config[this.id].network,
         });
         const privateAccountNode = getPrivateMasterKey({
             bipIdCoin: this.bipIdCoin,

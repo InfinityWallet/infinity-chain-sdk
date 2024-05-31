@@ -45,7 +45,6 @@ import {
     getPrivateMasterKey,
     getRootNode,
 } from '@infinity/core-sdk/lib/commonjs/networks/utils/secp256k1';
-import networks from '@infinity/core-sdk/lib/commonjs/networks/networks';
 import { getPrivateAddress } from '@infinity/core-sdk/lib/commonjs/networks/utxo';
 import { BIP32Interface } from 'bitcoinjs-lib';
 
@@ -429,7 +428,7 @@ class UTXOWallet extends CoinWallet {
         if (!protocol) throw new Error(MissingParams);
         const rootNode = getRootNode({
             mnemonic,
-            network: networks[this.id],
+            network: config[this.id].network,
         });
         const privateAccountNode = getPrivateMasterKey({
             bipIdCoin: this.bipIdCoin,
